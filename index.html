@@ -11,10 +11,39 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <h1>Hello</h1>
+    <div class="container" id="weather-app">
+      <form>
+        <input type="search" placeholder="Search for a city..." />
+        <input type="submit" value="search" id="search-btn" />
+        <input type="submit" value="current city" id="current-city-btn" />
+      </form>
+      <h1 id="city-name">Copenhagen</h1>
+      <ul>
+        <li id="timestamp">Friday 20:32</li>
+        <li id="weather-description">Clear sky</li>
+      </ul>
+      <div class="weatherSection">
+        <span id="current-temperature"> 15 </span>
+        <span id="celcius-fahrenheit">
+          <a href="#"><span id="celcius-link">°C</span></a> |
+          <a href="#"><span id="fahrenheit-link">°F</span></a>
+        </span>
+      </div>
+      <div>
+        <ul>
+          <li class="weatherNumbers">
+            Humidity: <span id="humidity">15</span>%
+          </li>
+          <li class="weatherNumbers">
+            Wind: <span id="wind-speed">5</span>m/s
+          </li>
+        </ul>
+      </div>
+      <p id="coder">Opensource codede by cowoakvalley</p>
+    </div>
   </body>
 </html>
