@@ -16,34 +16,48 @@
   </head>
   <body>
     <div class="container" id="weather-app">
-      <form>
-        <input type="search" placeholder="Search for a city..." />
-        <input type="submit" value="search" id="search-btn" />
-        <input type="submit" value="current city" id="current-city-btn" />
+      <form id="search-bar" class="mb-3">
+        <div class="row">
+          <div class="col-9">
+            <input
+              type="search"
+              placeholder="Enter a city..."
+              class="form-control"
+              id="city-input"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col-3">
+            <input type="submit" value="Search" class="btn btn-primary w-100" />
+          </div>
+        </div>
       </form>
       <h1 id="city-name">Copenhagen</h1>
       <ul>
         <li id="timestamp">Friday 20:32</li>
         <li id="weather-description">Clear sky</li>
       </ul>
-      <div class="weatherSection">
-        <span id="current-temperature"> 15 </span>
-        <span id="celcius-fahrenheit">
-          <a href="#"><span id="celcius-link">°C</span></a> |
-          <a href="#"><span id="fahrenheit-link">°F</span></a>
-        </span>
-      </div>
-      <div>
-        <ul>
-          <li class="weatherNumbers">
-            Humidity: <span id="humidity">15</span>%
-          </li>
-          <li class="weatherNumbers">
-            Wind: <span id="wind-speed">5</span>m/s
-          </li>
-        </ul>
-      </div>
+        <div class="row">
+            <div class="col-6">
+              <div class="d-flex weather-temperature">
+                <img src="" alt="Clear" id="icon" class="float-left" />
+                <div class="float-left">
+                  <strong id="current-temperature">15</strong>
+                  <span class="units"
+                    ><a href="#" id="celsius-link" class="active">°C </a> |
+                    <a href="#" id="fahrenheit-link">°F</a></span
+                  >
+                </div>
+              </div>
+            </div>
+      <div class="col-6">
+              <ul>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span>m/hr</li>
+              </ul>
+            </div>
       <p id="coder">Opensource codede by cowoakvalley</p>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
