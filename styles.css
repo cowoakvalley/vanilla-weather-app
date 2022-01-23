@@ -1,11 +1,12 @@
 #weather-app {
   max-width: 600px;
   margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 30px 30px;
+  margin-bottom: 0px;
+  padding: 20px 20px 0px 20px;
   border: solid 1px;
   border-color: lightgray;
-  border-radius: 10px;
+  border-radius: 5px;
+  color: rgb(135, 135, 135);
 }
 
 form {
@@ -15,4 +16,36 @@ form {
 ul {
   list-style-type: none;
   padding: 0px;
+  line-height: 20px;
+}
+
+h1 {
+  font-size: 25px;
+  font-weight: 400;
+  color: dimgray;
+}
+
+#coder {
+  text-align: center;
+  font-size: 10px;
+  color: darkgray;
+}
+
+#current-temperature {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.units {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
+
+#icon {
+  margin-right: 5px;
+  height: 80px;
+  width: 80px;
 }
