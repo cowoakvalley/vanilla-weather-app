@@ -37,27 +37,40 @@
         <li id="timestamp">Friday 20:32</li>
         <li id="weather-description">Clear sky</li>
       </ul>
-        <div class="row">
-            <div class="col-6">
-              <div class="d-flex weather-temperature">
-                <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="Clear" id="icon" class="float-left" />
-                <div class="float-left">
-                  <strong id="current-temperature">15</strong>
-                  <span class="units"
-                    ><a href="#" id="celsius-link" class="active">°C </a> |
-                    <a href="#" id="fahrenheit-link">°F</a></span
-                  >
-                </div>
-              </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="d-flex weather-temperature">
+            <img
+              src="http://openweathermap.org/img/wn/04d@2x.png"
+              alt="Clear"
+              id="icon"
+              class="float-left"
+            />
+            <div class="float-left">
+              <strong id="current-temperature">15</strong>
+              <span class="units"
+                ><a href="#" id="celsius-link" class="active">°C </a> |
+                <a href="#" id="fahrenheit-link">°F</a></span
+              >
             </div>
-      <div class="col-6">
-              <ul>
-                <li>Humidity: <span id="humidity"></span>%</li>
-                <li>Wind: <span id="wind"></span>m/s</li>
-              </ul>
-            </div>
-            <p id="coder"><a href="https://github.com/cowoakvalley/vanilla-weather-app">Opensource coded</a> by cowoakvalley</p>
           </div>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li>Humidity: <span id="humidity"></span>%</li>
+            <li>Wind: <span id="wind"></span> m/s</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p id="coder">
+      <small>
+        <a href="https://github.com/cowoakvalley/vanilla-weather-app"
+          >Opensource coded</a
+        >
+        by cowoakvalley
+      </small>
+    </p>
     <script src="index.js"></script>
   </body>
 </html>

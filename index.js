@@ -27,44 +27,49 @@ function currentTime() {
 }
 currentTime();
 
-let form = document.querySelector("#city-input");
-form.addEventListener("submit", whichCity);
-
-// search city
-function whichCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-  searchCity(city);
-}
-
-function searchCity(city) {
-  let apiKey = `53982876ff7765b389bc1a3133b58f62`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-  axios.get(apiUrl).then(displayWeather);
-}
-
-function displayWeather(response) {
+function showWeather(response) {
   console.log(response.data);
   document.querySelector("#city-name").innerHTML = response.data.name;
-  document.querySelector("#current-temperature").innerHTML =
-    Math.round(celciusTemp);
+  document.querySelector("#current-temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].description;
   document
     .querySelector("#icon")
     .setAttribute(
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-  document
-    .querySelector("#icon")
-    .setAttribute("alt", response.data.weather[0].description);
-  celciusTemp = response.data.main.temp;
 }
 
-let celciusTemp = null;
+function search(city) {
+  let apiKey = "feb97c1a35671d6e977431bde6db4781";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showWeather);
+}
+
+function searchCity(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  search(cityInput.value);
+}
+
+search("Copenhagen");
+
+let form = document.querySelector("#search-bar");
+form.addEventListener("submit", searchCity);
+
+function showFahrenheit(event) {
+  let temperatureElement = document.querySelector("#current-temperature");
+  let fahrenheitTemp = temperatureElement * 1.8 + 32;
+  console.log(fahrenheitTemp);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheit);
