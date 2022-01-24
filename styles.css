@@ -58,6 +58,7 @@ h1 {
 .active {
   text-decoration: none;
   color: rgb(135, 135, 135);
+  cursor: default;
 }
 
 .active:hover {

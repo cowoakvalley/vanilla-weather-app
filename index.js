@@ -45,6 +45,7 @@ function showWeather(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+  celciusTemp = response.data.main.temp;
 }
 
 function search(city) {
@@ -65,11 +66,26 @@ search("Copenhagen");
 let form = document.querySelector("#search-bar");
 form.addEventListener("submit", searchCity);
 
-function showFahrenheit(event) {
-  let temperatureElement = document.querySelector("#current-temperature");
-  let fahrenheitTemp = temperatureElement * 1.8 + 32;
-  console.log(fahrenheitTemp);
+function selectFahrenheit(event) {
+  event.preventDefault();
+  document.querySelector("#current-temperature").innerHTML = Math.round(
+    celciusTemp * 1.8 + 32
+  );
+  linkFahrenheit.classList.add("active");
+  celciusLink.classList.remove("active");
 }
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheit);
+function clickCelcius(event) {
+  event.preventDefault();
+  celciusLink.innerHTML = Math.round(celciusTemp);
+  celciusLink.classList.add("active");
+  linkFahrenheit.classList.remove("active");
+}
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", clickCelcius);
+
+let linkFahrenheit = document.querySelector("#fahrenheit-link");
+linkFahrenheit.addEventListener("click", selectFahrenheit);
+
+let celciusTemp = null;
