@@ -29,6 +29,7 @@ currentTime();
 
 function showWeather(response) {
   console.log(response.data);
+  celsiusTemp = response.data.main.temp;
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -45,7 +46,6 @@ function showWeather(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-  celciusTemp = response.data.main.temp;
 }
 
 function search(city) {
@@ -61,31 +61,32 @@ function searchCity(event) {
   search(cityInput.value);
 }
 
-search("Copenhagen");
-
 let form = document.querySelector("#search-bar");
 form.addEventListener("submit", searchCity);
 
-function selectFahrenheit(event) {
+function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  document.querySelector("#current-temperature").innerHTML = Math.round(
-    celciusTemp * 1.8 + 32
-  );
-  linkFahrenheit.classList.add("active");
-  celciusLink.classList.remove("active");
+  let tempertureElement = document.querySelector("#current-temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemp * 9) / 5 + 32;
+  tempertureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-function clickCelcius(event) {
+function displayCelsiusTemperature(event) {
   event.preventDefault();
-  celciusLink.innerHTML = Math.round(celciusTemp);
-  celciusLink.classList.add("active");
-  linkFahrenheit.classList.remove("active");
+  let tempertureElement = document.querySelector("#current-temperature");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  tempertureElement.innerHTML = Math.round(celsiusTemp);
 }
 
-let celciusLink = document.querySelector("#celcius-link");
-celciusLink.addEventListener("click", clickCelcius);
+let celsiusTemp = null;
 
-let linkFahrenheit = document.querySelector("#fahrenheit-link");
-linkFahrenheit.addEventListener("click", selectFahrenheit);
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
-let celciusTemp = null;
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+search("Copenhagen");
